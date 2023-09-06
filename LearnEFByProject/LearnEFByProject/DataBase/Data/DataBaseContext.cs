@@ -15,5 +15,3 @@ public class DataBaseContext : DbContext
         optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-1T54BKJ\MSSQLSERVER02;Initial Catalog=LearnEFByProject;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False");
     }
 }
-
-//Data Source=DESKTOP-1T54BKJ\MSSQLSERVER02;Integrated Security=True;Connect Timeout=30;Encrypt=False;Trust Server Certificate=False;Application Intent=ReadWrite;Multi Subnet Failover=False
