@@ -8,4 +8,9 @@ public class CustomerView
     {
         return new Customer();
     }
+    
+    public static Customer Register()
+    {
+        return new Customer();
+    }
 }

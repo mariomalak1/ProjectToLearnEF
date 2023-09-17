@@ -1,7 +1,4 @@
-﻿using LearnEFByProject.DataBase;
-using LearnEFByProject.DataBase.Models;
+﻿using LearnEFByProject.Views;
 
-var db = new DataBaseContext();
-
-// adding some products
+MainView.Start();
 
