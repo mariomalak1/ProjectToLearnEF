@@ -2,6 +2,16 @@
 
 public class MainView
 {
+public static int isNumiric(string str){
+    try{
+        int num = Convert.ToInt32(str);
+        return num;
+    }
+    catch (Exception e)
+    {
+        return 0;
+    }
+}
     public static void redirect(string response)
     {
         if (response == "1")
