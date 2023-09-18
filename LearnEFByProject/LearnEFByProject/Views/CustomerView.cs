@@ -16,7 +16,9 @@ public class CustomerView
             Customer customer = CustomerController.Login(numID);
             if (customer != null)
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Login Done successfully");
+                Console.ForegroundColor = ConsoleColor.Gray;
                 return customer;
             }
         }

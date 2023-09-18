@@ -1,4 +1,5 @@
 ﻿using LearnEFByProject.DataBase.Models;
+using LearnEFByProject.Views;
 
 namespace LearnEFByProject.Controllers;
 
@@ -15,6 +16,23 @@ public class ProductController
             database.Product.Add(product);
             database.SaveChanges();
             return product;
+        }
+    }
+
+    public static ICollection<Product> AllProducts()
+    {
+        try
+        {
+            using (var database = new DataBase.DataBaseContext())
+            {
+                List<Product> products = database.Product.ToList();
+
+                return products;
+            }
+        }
+        catch (Exception e)
+        {
+            return null;
         }
     }
 }
