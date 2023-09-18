@@ -1,8 +1,10 @@
-﻿namespace LearnEFByProject.Views;
+﻿using LearnEFByProject.DataBase.Models;
+
+namespace LearnEFByProject.Views;
 
 public class MainView
 {
-public static int isNumiric(string str){
+    public static int isNumiric(string str){
     try{
         int num = Convert.ToInt32(str);
         return num;
@@ -21,7 +23,13 @@ public static int isNumiric(string str){
         
         else if (response == "2")
         {
-            CustomerView.Login();
+            var customer = CustomerView.Login();
+            Console.WriteLine("Login Done Successfully");
+        }
+
+        else if (response == "3")
+        {
+            CustomerView.AllCustomersView();
         }
         
         else
@@ -47,11 +55,55 @@ public static int isNumiric(string str){
         Console.WriteLine("Main Page");
         Console.WriteLine("Select one Option From All of this options");
         Console.WriteLine("1- create new customer");
-        Console.WriteLine("2- Login with customer phone");
+        Console.WriteLine("2- Login with customer id");
+        Console.WriteLine("3- Show all customers in system");
         Console.Write("What's Your response : ");
         
         response = Console.ReadLine();
 
         redirect(response);
+    }
+
+    public static void AfterLoginView(Customer customer)
+    {
+        Console.WriteLine("Choose from this menu : ");
+        Console.WriteLine("1-Add New Order");
+        Console.WriteLine("2-Add New Product");
+        Console.WriteLine("3-Finish The Cart");
+        Console.WriteLine("4-Logout");
+        Console.Write("What's your response : ");
+        string Response = Console.ReadLine();        
+    }
+
+    public static Customer AfterLoginRedirect(string res, Customer customer)
+    {
+        if (res == "1")
+        {
+            // add new order
+        }
+        else if (res == "2")
+        {
+            // add new product
+        }
+        else if (res == "3")
+        {
+            // finish the cart
+        }
+        else if(res == "4")
+        {
+            // logout
+            Start();
+            return null;
+        }
+        else
+        {
+            var color = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Please enter valid response");
+            Console.ForegroundColor = color;
+            AfterLoginView(customer);
+            return null;
+        }
+        return customer;
     }
 }

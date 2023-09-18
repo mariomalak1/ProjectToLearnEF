@@ -20,13 +20,56 @@ public class CustomerView
                 return customer;
             }
         }
+
+        var color = Console.ForegroundColor;
+        Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Please enter valId ID");
+        Console.ForegroundColor = color;
         MainView.Start();
         return null;
     }
-    
-    public static Customer Register()
+    public static void Register()
     {
-        return new Customer();
+      Console.WriteLine("Welcome in Registration Page");
+      Console.Write("Enter Your name : ");
+      string name = Console.ReadLine();
+
+      Console.Write("Enter Your phone Number : ");
+      string phone = Console.ReadLine();
+
+      CustomerController.Register(name, phone);
+      MainView.Start();
+    }
+    public static void AllCustomersView()
+    {
+        var customers = CustomerController.AllCustomers();
+        if (customers is null)
+        {
+            Console.WriteLine("No Customers in System Yet");
+        }
+        else
+        {
+            var color = Console.ForegroundColor;
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(new string('-', 35));
+
+            int Counter = 0;
+            foreach (var customer in customers)
+            {
+                Counter++;
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Customer " + Counter);
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("Customer ID : " + customer.Id);
+                Console.WriteLine("Customer Name : " + customer.Name);
+                Console.WriteLine("Customer Phone : " + customer.Phone);
+            }
+
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(new string('-', 35));
+            Console.ForegroundColor = color;
+        }
+        MainView.Start();
     }
 }
