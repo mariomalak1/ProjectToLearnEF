@@ -1,4 +1,6 @@
 ﻿using LearnEFByProject.Views;
 
-MainView.Start();
+while (true) {
+    MainView.Start();
+}
 

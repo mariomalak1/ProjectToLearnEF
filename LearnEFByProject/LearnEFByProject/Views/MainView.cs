@@ -24,7 +24,7 @@ public class MainView
         else if (response == "2")
         {
             var customer = CustomerView.Login();
-            Console.WriteLine("Login Done Successfully");
+            AfterLoginView(customer);
         }
 
         else if (response == "3")
@@ -69,10 +69,12 @@ public class MainView
         Console.WriteLine("Choose from this menu : ");
         Console.WriteLine("1-Add New Order");
         Console.WriteLine("2-Add New Product");
-        Console.WriteLine("3-Finish The Cart");
-        Console.WriteLine("4-Logout");
+        Console.WriteLine("3-View All Products");
+        Console.WriteLine("4-Finish The Cart");
+        Console.WriteLine("5-Logout");
         Console.Write("What's your response : ");
-        string Response = Console.ReadLine();        
+        string Response = Console.ReadLine();
+        AfterLoginRedirect(Response, customer);
     }
 
     public static Customer AfterLoginRedirect(string res, Customer customer)
@@ -83,13 +85,17 @@ public class MainView
         }
         else if (res == "2")
         {
-            // add new product
+            ProductView.AddProduct(customer);
         }
         else if (res == "3")
         {
+            ProductView.AllProducts(customer);
+        }
+        else if (res == "4")
+        {
             // finish the cart
         }
-        else if(res == "4")
+        else if(res == "5")
         {
             // logout
             Start();
