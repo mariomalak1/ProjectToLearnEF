@@ -9,4 +9,6 @@ public class Cart
     public Customer Customer { get; set; } = null;
     
     public int CustomerId { get; set; }
+
+    public bool Finished { get; set; }
 }
