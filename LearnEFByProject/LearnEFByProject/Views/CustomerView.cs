@@ -32,15 +32,18 @@ public class CustomerView
     }
     public static void Register()
     {
-      Console.WriteLine("Welcome in Registration Page");
-      Console.Write("Enter Your name : ");
-      string name = Console.ReadLine();
+        Console.WriteLine("Welcome in Registration Page");
+        Console.Write("Enter Your name : ");
+        string name = Console.ReadLine();
 
-      Console.Write("Enter Your phone Number : ");
-      string phone = Console.ReadLine();
+        Console.Write("Enter Your phone Number : ");
+        string phone = Console.ReadLine();
 
-      CustomerController.Register(name, phone);
-      MainView.Start();
+        CustomerController.Register(name, phone);
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("Customer Done Successfully");
+        Console.ForegroundColor = ConsoleColor.Gray;
+        MainView.Start();
     }
     public static void AllCustomersView()
     {

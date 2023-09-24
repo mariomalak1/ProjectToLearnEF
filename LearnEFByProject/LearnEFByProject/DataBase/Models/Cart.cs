@@ -10,5 +10,6 @@ public class Cart
     
     public int CustomerId { get; set; }
 
-    public bool Finished { get; set; }
+    public bool Finished { get; set; } = false;
 }
+

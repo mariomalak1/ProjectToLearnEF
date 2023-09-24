@@ -3,4 +3,3 @@
 while (true) {
     MainView.Start();
 }
-

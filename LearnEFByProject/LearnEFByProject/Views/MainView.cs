@@ -81,7 +81,7 @@ public class MainView
     {
         if (res == "1")
         {
-            // add new order
+            OrderView.AddOrder(customer);
         }
         else if (res == "2")
         {

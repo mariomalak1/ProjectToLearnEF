@@ -5,6 +5,7 @@ namespace LearnEFByProject.DataBase.Models;
 
 public class Customer
 {
+    [Key]
     public int Id { get; set; }
     
     [Required]
