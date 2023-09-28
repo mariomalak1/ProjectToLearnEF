@@ -4,9 +4,9 @@ public class Order
 {
     public int Id { get; set; }
 
-    public Cart Cart { get; set; } = null;
+    public Cart Cart { get; set; }
 
-    public Product Product { get; set; } = null;
+    public Product Product { get; set; }
 
     public int CartId { get; set; }
     

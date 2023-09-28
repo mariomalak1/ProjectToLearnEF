@@ -1,4 +1,5 @@
-﻿using LearnEFByProject.DataBase.Models;
+﻿using LearnEFByProject.Controllers;
+using LearnEFByProject.DataBase.Models;
 
 namespace LearnEFByProject.Views;
 
@@ -71,7 +72,15 @@ public class MainView
         Console.WriteLine("2-Add New Product");
         Console.WriteLine("3-View All Products");
         Console.WriteLine("4-Finish The Cart");
-        Console.WriteLine("5-Logout");
+        if (CartController.HasUnFinishedCart(customer) is null)
+        {
+            Console.WriteLine("5-Logout");
+        }
+        else
+        {
+            Console.WriteLine("5-View All Orders Created");
+            Console.WriteLine("6-Logout");
+        }
         Console.Write("What's your response : ");
         string Response = Console.ReadLine();
         AfterLoginRedirect(Response, customer);
@@ -93,13 +102,20 @@ public class MainView
         }
         else if (res == "4")
         {
-            // finish the cart
+            CartController.FinishCart(customer);
         }
         else if(res == "5")
         {
-            // logout
-            Start();
-            return null;
+            if (CartController.HasUnFinishedCart(customer) is null)
+            {
+                // logout
+                Start();
+                return null;
+            }
+            else
+            {
+                CartView.ViewAllOrdersInCart(customer);
+            }
         }
         else
         {

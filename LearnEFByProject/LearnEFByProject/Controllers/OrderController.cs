@@ -17,13 +17,11 @@ public class OrderController
             if (cart == null)
             {
                 Console.WriteLine("Create New Cart");
-                cart = new Cart() { Finished = false };
-                database.Cart.Add(cart);
-                cart.Customer = customer; cart.CustomerId = customer.Id;
+                cart = new Cart() { Finished = false, CustomerId = customer.Id, Orders = new List<Order>() };
+                database.Cart.Add(cart);    
                 database.SaveChanges();
             }
 
-            Console.WriteLine($"Cart ID : {cart.Id}, Cart Customer Name : {cart.Customer.Name} ");
 
             // get the product
             Product product = database.Product.Where(p => p.Id == productID).FirstOrDefault();
@@ -38,16 +36,16 @@ public class OrderController
             }
 
             Console.WriteLine($"Product Detials -> Name : {product.Name}, ID : {product.Id}");
-            Console.WriteLine($"Cart Detials -> Customer Name : {cart.Customer.Name}, ID : {cart.Id}, Finished : {cart.Finished}");
 
-            Order order = new Order() { Cart = cart, Product = product};
+            Order order = new Order() { Cart = cart, Product = product, CartId=cart.Id};
             database.Orders.Add(order);
             
             database.SaveChanges();
 
             Console.WriteLine($"Order Detials -> ID : {order.Id}, Cart ID Of Order : {order.Cart.Id}, Cart is Finished Or Not : {order.Cart.Finished}");
-
+            
             return order;
         }
     }
 }
+
